@@ -3,7 +3,9 @@
     <div class="actions">
       <h3 @click="toggleDetails">{{ project.title }}</h3>
       <div class="icons">
-        <span class="material-icons">edit</span>
+        <router-link :to="{ name: 'EditProject', params: { id: project.id } }">
+          <span class="material-icons">edit</span>
+        </router-link>
         <span @click="deleteProject" class="material-icons">delete</span>
         <span @click="toggleComplete" class="material-icons tick">done</span>
       </div>
@@ -22,7 +24,7 @@ export default {
     return {
       showDetails: false,
       uri: `http://localhost:3000/projects/${this.project.id}`
-    }
+    };
   },
   methods: {
     toggleDetails() {
@@ -42,7 +44,7 @@ export default {
           .catch(err => console.log(err.message));
     }
   }
-}
+};
 </script>
 
 <style>
